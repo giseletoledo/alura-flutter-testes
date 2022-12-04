@@ -7,5 +7,13 @@ void main()
     final bank = BankModel();
     bank.deposit(10);
     expect(bank.points, 10);
+
+  });
+
+
+  test('Bank model transfer should turn points into 10', () {
+    final bank = BankModel();
+    bank.transfer(10);
+    expect(bank.points, 10);
   });
 }
