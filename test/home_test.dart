@@ -1,4 +1,5 @@
 import 'package:estilizacao_componentes/components/box_card.dart';
+import 'package:estilizacao_componentes/data/bank_http.mocks.dart';
 import 'package:estilizacao_componentes/data/bank_inherited.dart';
 import 'package:estilizacao_componentes/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ void main(){
     //constrói a tela que será testada
     await widgetTester.pumpWidget(MaterialApp(
         home: BankInherited(
-            child: Home()
+            child: Home(api: MockBankHttp().dolarToReal())
         ),
        ));
     //busca o texto no widget
@@ -19,7 +20,7 @@ void main(){
   testWidgets('finds a LinearProgressIndicator', (widgetTester) async {
     await widgetTester.pumpWidget(MaterialApp(
       home: BankInherited(
-          child: Home()
+          child: Home(api: MockBankHttp().dolarToReal())
       ),
     ));
     expect(find.byType(LinearProgressIndicator), findsOneWidget);
@@ -29,7 +30,7 @@ void main(){
   testWidgets('finds 5 BoxCards ', (widgetTester) async {
     await widgetTester.pumpWidget(MaterialApp(
       home: BankInherited(
-          child: Home()
+          child: Home(api: MockBankHttp().dolarToReal())
       ),
     ));
     expect(find.byWidgetPredicate((widget){
@@ -44,7 +45,7 @@ void main(){
   testWidgets('finds 5 BoxCards ', (widgetTester) async {
     await widgetTester.pumpWidget(MaterialApp(
       home: BankInherited(
-          child: Home()
+          child: Home(api: MockBankHttp().dolarToReal())
       ),
     ));
     expect(find.byWidgetPredicate((widget){
@@ -61,7 +62,7 @@ void main(){
     //constrói a tela que será testada
     await widgetTester.pumpWidget(MaterialApp(
       home: BankInherited(
-        child: Home(),
+        child: Home(api: MockBankHttp().dolarToReal()),//Inserir a API Mock, no app real é outra API
       ),
     ));
     //busca o texto no widget
@@ -73,7 +74,7 @@ void main(){
     //constrói a tela que será testada
     await tester.pumpWidget(MaterialApp(
       home: BankInherited(
-        child: Home(),
+        child: Home(api: MockBankHttp().dolarToReal()),
       ),
     ));
     await tester.tap(find.text('Deposit'));//ao fazer o tap muda para 10
