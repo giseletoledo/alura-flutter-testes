@@ -13,4 +13,13 @@ void main(){
     final spentFinder = find.text('Spent');
     expect(spentFinder, findsOneWidget);
   });
+  testWidgets('finds a LinearProgressIndicator', (widgetTester) async {
+    await widgetTester.pumpWidget(MaterialApp(
+      home: BankInherited(
+          child: Home()
+      ),
+    ));
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+  });
+
 }
